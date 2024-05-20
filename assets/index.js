@@ -47,7 +47,7 @@ function handleRetweetClick(tweetId) {
   render();
 }
 
-// lets the user shoe and hide replys by clicking in the comments.
+// lets the user show and hide replys by clicking in the comments.
 function handleReplyClick(replyId) {
   document.getElementById(`replies-${replyId}`).classList.toggle("hidden");
 }
@@ -76,7 +76,17 @@ function handleTweetBtnClick() {
 }
 
 function handleDeleteTweet(deleteId) {
-  document.getElementById(`tweet-${deleteId}`).classList.toggle("hidden");
+  const tweetEl = document.getElementById("tweet");
+  const deleteBtn = tweetsData.filter(function (tweet) {
+    return tweet.uuid === deleteId;
+  })[0];
+  if (!deleteBtn.isDeleted) {
+    tweetEl.style.display = "none";
+  }
+
+  deleteBtn.isDeleted = !deleteBtn.isDeleted;
+  render();
+  console.log(deleteBtn);
 }
 
 // gets data from data.js and loops through each item in the array with the forEach method to display posts in the format specified using the HTML code that has is added on and equal to feedHtml.
