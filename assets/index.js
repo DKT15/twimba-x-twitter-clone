@@ -1,12 +1,7 @@
 import { tweetsData } from "/assets/data.js";
-const tweetInput = document.getElementById("tweet-input");
-const tweetBtn = document.getElementById("tweet-btn");
+import { v4 as uuidv4 } from "https://jspm.dev/uuid";
 
-tweetBtn.addEventListener("click", function () {
-  console.log(tweetInput.value);
-});
-
-// If the like icon is clicked then handleLikeClick will be passed the uuid stored in the like data attribute.
+// This is an event listener for the page. If any icon is is clicked the data will be passed to respective functions.
 document.addEventListener("click", function (e) {
   if (e.target.dataset.like) {
     handleLikeClick(e.target.dataset.like);
@@ -14,6 +9,10 @@ document.addEventListener("click", function (e) {
     handleRetweetClick(e.target.dataset.retweet);
   } else if (e.target.dataset.reply) {
     handleReplyClick(e.target.dataset.reply);
+  } else if (e.target.id === "tweet-btn") {
+    handleTweetBtnClick(e.target.dataset);
+  } else if (e.target.dataset.delete) {
+    handleDeleteTweet(e.target.dataset.delete);
   }
 });
 
@@ -53,6 +52,33 @@ function handleReplyClick(replyId) {
   document.getElementById(`replies-${replyId}`).classList.toggle("hidden");
 }
 
+function handleTweetBtnClick() {
+  const tweetInput = document.getElementById("tweet-input");
+
+  if (tweetInput.value) {
+    //If there is a value in the tweet input, the code below will run.
+    tweetsData.unshift({
+      // pushes data to the start. This will make the most recent tweet appear at the top.
+      handle: `@Scrimba`,
+      profilePic: `/assets/scrimbalogo.png`,
+      likes: 0,
+      retweets: 0,
+      tweetText: tweetInput.value,
+      replies: [],
+      isLiked: false,
+      isRetweeted: false,
+      isdeleted: false,
+      uuid: uuidv4(),
+    });
+    render();
+    tweetInput.value = "";
+  }
+}
+
+function handleDeleteTweet(deleteId) {
+  document.getElementById(`tweet-${deleteId}`).classList.toggle("hidden");
+}
+
 // gets data from data.js and loops through each item in the array with the forEach method to display posts in the format specified using the HTML code that has is added on and equal to feedHtml.
 function getFeedHtml() {
   let feedHtml = ``;
@@ -72,6 +98,12 @@ function getFeedHtml() {
 
     let repliesHtml = "";
 
+    let deleteIconClass = "";
+
+    if (tweet.isDeleted) {
+      deleteIconClass = "deleted";
+    }
+
     // if the length of the replies is greater than 0 then the tweet has replies and the code will execute.
     if (tweet.replies.length > 0) {
       tweet.replies.forEach(function (reply) {
@@ -88,11 +120,13 @@ function getFeedHtml() {
       });
     }
 
-    feedHtml += `<div class="tweet">
+    feedHtml += `<div id="tweet" class="tweet">
   <div class="tweet-inner">
   <img src="${tweet.profilePic}" class="profile-pic">
   <div>
-      <p class="handle">${tweet.handle}</p>
+      <p class="handle">${tweet.handle} <i class="fa-solid fa-xmark ${deleteIconClass}" 
+      data-delete="${tweet.uuid}">
+      </i></p>
       <p class="tweet-text">${tweet.tweetText}</p>
       <div class="tweet-details">
           <span class="tweet-detail">

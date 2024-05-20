@@ -26,6 +26,10 @@ i {
     color: red;
 }
 
+.deleted {
+    color: red;
+}
+
 .retweeted {
     color: limegreen;
 }
@@ -112,6 +116,8 @@ button {
     font-weight: 500;
     color: #555;
     margin-top: 0;
+    display: flex;
+    justify-content: space-between;
 }
 
 .tweet-text {
