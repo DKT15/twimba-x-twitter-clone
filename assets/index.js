@@ -80,7 +80,7 @@ function handleBookmarkTweet(bookmarkId) {
     return tweet.uuid === bookmarkId;
   })[0];
 
-  bookmarkBtn.isbookmarked = !bookmarkBtn.isbookmarked;
+  bookmarkBtn.isbookmarked = !bookmarkBtn.isbookmarked; //flips between true or false based on whether or not the use bookmarks.
 
   render();
   console.log(bookmarkBtn);

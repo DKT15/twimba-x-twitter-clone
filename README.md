@@ -1,10 +1,8 @@
 # twimba-x-twitter-clone
 
-This is an X (formerly Twitter) clone.
-
 ## Description
 
-This website was created for bootcamp students going through prework. I learnt the how to utilise forEach, data Attributes, conditionally rendered styles, generating UUIDs etc.
+This is an X (formerly Twitter) clone. This mobile app was created as a clone and implements basic X (formerly Twitter) functinonality. I learnt the how to utilise forEach, data Attributes, conditionally rendered styles, generating UUIDs etc.
 
 ## Table of Contents
 
@@ -21,6 +19,9 @@ This website was created for bootcamp students going through prework. I learnt t
 - HTML
 - CSS
 - Javascript
+- [FontAwesome](https://docs.fontawesome.com/)
+- [UUID](https://github.com/uuidjs/uuid?tab=readme-ov-file#cdn-builds)
+- [Google Fonts](https://fonts.google.com/)
 
 ## Usage
 
@@ -28,11 +29,11 @@ To use this Prework Study Guide, you can review the notes in each section.
 
 ## Screenshot
 
-![Prework Study Guide Image.](/assets/prework-study-guide-img.jpg)
+![Twimba Image.](/assets/twimba-image.png)
 
 ## Deployment
 
-You can access the website with this link.(https://dkt15.github.io/Prework-Study-Guide/)
+You can access the website with this [link.](https://dkt15.github.io/Prework-Study-Guide/)
 
 ## Contributing
 
