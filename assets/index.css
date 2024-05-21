@@ -26,8 +26,8 @@ i {
     color: red;
 }
 
-.deleted {
-    color: red;
+.bookmarked {
+    color: #0F8CDF;
 }
 
 .retweeted {
@@ -136,5 +136,5 @@ button {
 
 /* utility */
 .hidden {
-    display: none !important;
+    display: none
 }

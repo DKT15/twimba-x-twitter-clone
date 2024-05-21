@@ -11,8 +11,8 @@ document.addEventListener("click", function (e) {
     handleReplyClick(e.target.dataset.reply);
   } else if (e.target.id === "tweet-btn") {
     handleTweetBtnClick(e.target.dataset);
-  } else if (e.target.dataset.delete) {
-    handleDeleteTweet(e.target.dataset.delete);
+  } else if (e.target.dataset.bookmark) {
+    handleBookmarkTweet(e.target.dataset.bookmark);
   }
 });
 
@@ -75,18 +75,15 @@ function handleTweetBtnClick() {
   }
 }
 
-function handleDeleteTweet(deleteId) {
-  const tweetEl = document.getElementById("tweet");
-  const deleteBtn = tweetsData.filter(function (tweet) {
-    return tweet.uuid === deleteId;
+function handleBookmarkTweet(bookmarkId) {
+  const bookmarkBtn = tweetsData.filter(function (tweet) {
+    return tweet.uuid === bookmarkId;
   })[0];
-  if (!deleteBtn.isDeleted) {
-    tweetEl.style.display = "none";
-  }
 
-  deleteBtn.isDeleted = !deleteBtn.isDeleted;
+  bookmarkBtn.isbookmarked = !bookmarkBtn.isbookmarked;
+
   render();
-  console.log(deleteBtn);
+  console.log(bookmarkBtn);
 }
 
 // gets data from data.js and loops through each item in the array with the forEach method to display posts in the format specified using the HTML code that has is added on and equal to feedHtml.
@@ -108,10 +105,10 @@ function getFeedHtml() {
 
     let repliesHtml = "";
 
-    let deleteIconClass = "";
+    let bookmarkIconClass = "";
 
-    if (tweet.isDeleted) {
-      deleteIconClass = "deleted";
+    if (tweet.isbookmarked) {
+      bookmarkIconClass = "bookmarked";
     }
 
     // if the length of the replies is greater than 0 then the tweet has replies and the code will execute.
@@ -134,9 +131,7 @@ function getFeedHtml() {
   <div class="tweet-inner">
   <img src="${tweet.profilePic}" class="profile-pic">
   <div>
-      <p class="handle">${tweet.handle} <i class="fa-solid fa-xmark ${deleteIconClass}" 
-      data-delete="${tweet.uuid}">
-      </i></p>
+      <p class="handle">${tweet.handle}</p>
       <p class="tweet-text">${tweet.tweetText}</p>
       <div class="tweet-details">
           <span class="tweet-detail">
@@ -156,8 +151,12 @@ function getFeedHtml() {
               data-retweet="${tweet.uuid}"
               ></i>
               ${tweet.retweets}
-              </span>
-          </div>   
+          </span>
+          <span class="tweet-detail">
+          <i class="fa-solid fa-bookmark ${bookmarkIconClass}" 
+          data-bookmark="${tweet.uuid}"></i> 
+          </span>
+        </div> 
       </div>            
   </div>
   <div class="hidden" id="replies-${tweet.uuid}">

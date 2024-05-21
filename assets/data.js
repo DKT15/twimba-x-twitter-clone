@@ -9,7 +9,7 @@ export const tweetsData = [
     replies: [],
     isLiked: false,
     isRetweeted: false,
-    isDeleted: false,
+    isbookmarked: false,
     uuid: "4b161eee-c0f5-4545-9c4b-8562944223ee",
   },
   {
@@ -32,7 +32,7 @@ export const tweetsData = [
     ],
     isLiked: false,
     isRetweeted: false,
-    isDeleted: false,
+    isbookmarked: false,
     uuid: "3c23454ee-c0f5-9g9g-9c4b-77835tgs2",
   },
   {
@@ -55,7 +55,7 @@ export const tweetsData = [
     ],
     isLiked: false,
     isRetweeted: false,
-    isDeleted: false,
+    isbookmarked: false,
     uuid: "8hy671sff-c0f5-4545-9c4b-1237gyys45",
   },
 ];
