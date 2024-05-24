@@ -91,25 +91,13 @@ function getFeedHtml() {
   let feedHtml = ``;
 
   tweetsData.forEach(function (tweet) {
-    let likeIconClass = "";
+    const likeIconClass = tweet.isLiked ? "liked" : "";
 
-    if (tweet.isLiked) {
-      likeIconClass = "liked";
-    }
-
-    let retweetIconClass = "";
-
-    if (tweet.isRetweeted) {
-      retweetIconClass = "retweeted";
-    }
+    const retweetIconClass = tweet.isRetweeted ? "retweeted" : "";
 
     let repliesHtml = "";
 
-    let bookmarkIconClass = "";
-
-    if (tweet.isbookmarked) {
-      bookmarkIconClass = "bookmarked";
-    }
+    const bookmarkIconClass = tweet.isbookmarked ? "bookmarked" : "";
 
     // if the length of the replies is greater than 0 then the tweet has replies and the code will execute.
     if (tweet.replies.length > 0) {
