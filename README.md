@@ -25,7 +25,10 @@ This is an X (formerly Twitter) clone. This mobile app was created as a clone an
 
 ## Usage
 
-To use this Prework Study Guide, you can review the notes in each section.
+In this X clone, you can:
+
+- Write a tweet and post it. You'll then also be able to like, repost and bookmark it.
+- You can like, repost, bookmark and view comments on other posts.
 
 ## Screenshot
 
