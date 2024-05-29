@@ -2,7 +2,7 @@
 
 ## Description
 
-This is an X (formerly Twitter) clone. This mobile app was created as a clone and implements basic X (formerly Twitter) functinonality. I learnt the how to utilise forEach, data Attributes, conditionally rendered styles, generating UUIDs etc.
+This is an X (formerly Twitter) clone. This mobile app was created as a clone and implements basic X (formerly Twitter) functionality. I learnt how to utilise forEach, data Attributes, conditionally rendered styles, generating UUIDs etc.
 
 ## Table of Contents
 
